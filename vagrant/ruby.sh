@@ -3,8 +3,8 @@ echo 'export PATH=$HOME/vendor/bin:$PATH' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 source ~/.bash_profile
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.3.0 -v
-rbenv global 2.3.0
+rbenv install 2.3.1 -v
+rbenv global 2.3.1
 
 gem install bundler
 rbenv rehash

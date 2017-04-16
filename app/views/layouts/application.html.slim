@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    title
+      | Todo
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = viewport_meta_tag
+  body
+    header
+      nav class = 'navbar navbar-default'
+        .container-fluid
+          .navbar-header
+            button type = 'button' class = 'navbar-toggle collapsed' data-toggle = 'collapse' data-target = '#bs-example-navbar-collapse-1'
+              span class = 'sr-only'
+              span class = 'icon-bar'
+              span class = 'icon-bar'
+              span class = 'icon-bar'
+            = link_to 'ToDo', root_path, class:'navbar-brand'
+          .collapse.navbar-collapse#bs-example-navbar-collapse-1
+            ul class = 'nav navbar-nav'
+              - if user_signed_in?
+                li = link_to 'ホーム', root_path
+                - if current_user.admin?
+            ul class = 'nav navbar-nav navbar-right'
+              - if user_signed_in?
+                li = link_to current_user.name, root_path
+                li = link_to 'プロフィール変更', edit_user_registration_path
+                li = link_to destroy_user_session_path, method: :delete do
+                  span.glyphicon.glyphicon-log-out
+                  |  ログアウト
+              - else
+                li = link_to 'サインアップ', new_user_registration_path
+                li = link_to new_user_session_path do
+                  span.glyphicon.glyphicon-log-in
+                  |  ログイン
+    .container
+      = flash_messages
+      = yield
+    footer class = 'navbar-default navbar-fixed-bottom'
+      .container-fluid
+        center
+          span © 2017 Makera Inc

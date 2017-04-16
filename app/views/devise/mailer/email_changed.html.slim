@@ -1,0 +1,18 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    p
+      | Hello 
+      = @email
+      | !
+    - if @resource.try(:unconfirmed_email?)
+      p
+        | We're contacting you to notify you that your email is being changed to 
+        = @resource.unconfirmed_email
+        | .
+    - else
+      p
+        | We're contacting you to notify you that your email has been changed to 
+        = @resource.email
+        | .
+  .col-sm-2

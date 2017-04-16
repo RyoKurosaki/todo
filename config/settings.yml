@@ -1,0 +1,11 @@
+default: &default
+
+development:
+  <<: *default
+  FACEBOOK_KEY: '719467974924932'
+  FACEBOOK_SECRET: 19730f3671b0c3712356b175c44d4544
+
+production:
+  <<: *default
+  FACEBOOK_KEY: '719467974924932'
+  FACEBOOK_SECRET: 19730f3671b0c3712356b175c44d4544
